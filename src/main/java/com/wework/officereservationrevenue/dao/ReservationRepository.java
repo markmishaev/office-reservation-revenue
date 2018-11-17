@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 @Component
-public class ReservationRepository {
+public class ReservationRepository implements  IRepository{
 
     private final CsvDataLoader csvDataLoader = new CsvDataLoader();
 

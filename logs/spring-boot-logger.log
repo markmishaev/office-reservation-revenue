@@ -1024,3 +1024,6 @@ Caused by: org.springframework.beans.factory.support.BeanDefinitionOverrideExcep
 2018-11-17 23:44:58,525 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfficeReservationRevenueApplicationTests on or01976nb with PID 10208 (started by OR01976 in C:\Projects\WeWork\office-reservation-revenue)
 2018-11-17 23:44:58,528 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
 2018-11-17 23:44:59,139 INFO org.springframework.boot.StartupInfoLogger [main] Started OfficeReservationRevenueApplicationTests in 1.047 seconds (JVM running for 2.455)
+2018-11-17 23:58:17,681 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfficeReservationRevenueApplicationTests on or01976nb with PID 3832 (started by OR01976 in C:\Projects\WeWork\office-reservation-revenue)
+2018-11-17 23:58:17,684 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2018-11-17 23:58:18,806 INFO org.springframework.boot.StartupInfoLogger [main] Started OfficeReservationRevenueApplicationTests in 1.85 seconds (JVM running for 4.076)

@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.text.ParseException;
 import java.util.*;
 
-public class CurrentRevenueCalculation implements RevenueCalculationStrategy {
+public class CurrentRevenueCalculation implements IRevenueCalculationStrategy {
 
     private final Logger logger = LoggerFactory.getLogger(CurrentRevenueCalculation.class);
 
