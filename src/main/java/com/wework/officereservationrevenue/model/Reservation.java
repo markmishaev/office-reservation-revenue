@@ -26,10 +26,6 @@ public class Reservation {
         return MonthlyPrice;
     }
 
-    public void setMonthlyPrice(double monthlyPrice) {
-        MonthlyPrice = monthlyPrice;
-    }
-
     public Date getStartDay() {
         return StartDay;
     }

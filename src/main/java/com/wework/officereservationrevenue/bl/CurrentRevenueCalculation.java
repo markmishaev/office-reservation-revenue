@@ -33,7 +33,7 @@ public class CurrentRevenueCalculation implements RevenueCalculationStrategy {
             logger.error(errorMessage);
         }
 
-        return revenue;
+        return Math.round(revenue);
     }
 
     private double calculateRevenueForPartialMonths(List<Reservation> partialMonthReservations) {

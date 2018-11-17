@@ -2,10 +2,12 @@ package com.wework.officereservationrevenue.utils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.YearMonth;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.concurrent.TimeUnit;
 
 public class DateUtils {
 
@@ -59,8 +61,10 @@ public class DateUtils {
         Returns difference in days between two dates
      */
     public static long getNumberOfDaysBetweenTwoDates(Date startDate, Date endDate) {
-        long diff = endDate.getTime() - startDate.getTime();
 
-        return TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+        LocalDate date1 = startDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+        LocalDate date2 = endDate.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+
+        return ChronoUnit.DAYS.between(date1, date2);
     }
 }
