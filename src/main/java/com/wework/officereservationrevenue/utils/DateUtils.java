@@ -1,5 +1,7 @@
 package com.wework.officereservationrevenue.utils;
 
+import com.wework.officereservationrevenue.model.MonthRange;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
@@ -14,10 +16,18 @@ public class DateUtils {
     /*
     Converts YYYY-MM-dd string to Date
      */
-    public static Date convertYearAndMonthToDate(String yearAndMonth) throws ParseException {
+
+    public static MonthRange convertYearAndMonthToMonthRange(String yearAndMonth) throws ParseException {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        return sdf.parse(yearAndMonth);
+
+        String startYearAndMonth = yearAndMonth + "-01";
+        Date startDate = sdf.parse(startYearAndMonth);
+
+        String endYearAndMonth = yearAndMonth + "-" + getNumberOfDaysInMonth(startDate);
+        Date endDate = sdf.parse(endYearAndMonth);
+
+        return new MonthRange(startDate, endDate);
     }
 
     /*
@@ -34,28 +44,6 @@ public class DateUtils {
         return yearMonthObject.lengthOfMonth();
     }
 
-    /*
-        Get first date of next month
-     */
-    public static Date getFirstDateOfNextMonth(Date date) {
-
-        Calendar nextMonthDate = Calendar.getInstance();
-        nextMonthDate.setTime(date);
-        // Add the Date as next month ahead
-        nextMonthDate.add(Calendar.MONTH, 1);
-
-        return getFirstDateOfMonth(nextMonthDate.getTime());
-    }
-
-    /*
-        Get first date of this month
-     */
-    public static Date getFirstDateOfMonth(Date date) {
-        Calendar cal = Calendar.getInstance();
-        cal.setTime(date);
-        cal.set(Calendar.DAY_OF_MONTH, cal.getActualMinimum(Calendar.DAY_OF_MONTH));
-        return cal.getTime();
-    }
 
     /*
         Returns difference in days between two dates

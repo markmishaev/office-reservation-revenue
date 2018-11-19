@@ -183,10 +183,10 @@ Event: 3.554 Thread 0x00000000030c6000 Uncommon trap: reason=predicate action=ma
 Event: 4.172 Thread 0x00000000030c6000 Uncommon trap: reason=unstable_if action=reinterpret pc=0x000000000371da70 method=jdk.internal.org.objectweb.asm.Type.getArgumentsAndReturnSizes(Ljava/lang/String;)I @ 41
 
 Classes redefined (4 events):
-Event: 280.049 Thread 0x000000001c758000 redefined class name=com.wework.officereservationrevenue.bl.CurrentRevenueCalculation, count=1
+Event: 280.049 Thread 0x000000001c758000 redefined class name=com.wework.officereservationrevenue.bl.CurrentReservationsStatisticsCalculation, count=1
 Event: 280.059 Thread 0x000000001c758000 redefined class name=com.wework.officereservationrevenue.utils.DateUtils, count=1
-Event: 443.827 Thread 0x000000001c758000 redefined class name=com.wework.officereservationrevenue.bl.CurrentRevenueCalculation, count=2
-Event: 503.801 Thread 0x000000001c758000 redefined class name=com.wework.officereservationrevenue.bl.CurrentRevenueCalculation, count=3
+Event: 443.827 Thread 0x000000001c758000 redefined class name=com.wework.officereservationrevenue.bl.CurrentReservationsStatisticsCalculation, count=2
+Event: 503.801 Thread 0x000000001c758000 redefined class name=com.wework.officereservationrevenue.bl.CurrentReservationsStatisticsCalculation, count=3
 
 Internal exceptions (10 events):
 Event: 3.459 Thread 0x00000000030c6000 Exception <a 'java/lang/ClassNotFoundException': org/springframework/boot/autoconfigure/task/TaskSchedulingAutoConfiguration$$EnhancerBySpringCGLIB$$101ca26bCustomizer> (0x000000076eee4c80) thrown at [C:\re\workspace\8-2-build-windows-amd64-cygwin\jdk8u19

@@ -18,12 +18,34 @@ public class Reservation {
     @JsonProperty("End Day")
     private  Date EndDay;
 
+    public Reservation() {
+    }
+
+    public Reservation(int capacity, double monthlyPrice, Date startDay, Date endDay) {
+        Capacity = capacity;
+        MonthlyPrice = monthlyPrice;
+        StartDay = startDay;
+        EndDay = endDay;
+    }
+
+    public Reservation(Reservation reservation)
+    {
+        Capacity = reservation.getCapacity();
+        MonthlyPrice = reservation.getMonthlyPrice();
+        StartDay = reservation.StartDay;
+        EndDay = reservation.EndDay;
+    }
+
     public int getCapacity() {
         return Capacity;
     }
 
     public double getMonthlyPrice() {
         return MonthlyPrice;
+    }
+
+    public void setMonthlyPrice(double monthlyPrice) {
+        MonthlyPrice = monthlyPrice;
     }
 
     public Date getStartDay() {

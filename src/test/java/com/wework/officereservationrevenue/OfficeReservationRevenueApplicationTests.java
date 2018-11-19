@@ -1,8 +1,9 @@
 package com.wework.officereservationrevenue;
 
-import com.wework.officereservationrevenue.bl.CurrentRevenueCalculation;
+import com.wework.officereservationrevenue.bl.CurrentReservationsStatisticsCalculation;
 import com.wework.officereservationrevenue.dao.ReservationRepository;
 import com.wework.officereservationrevenue.model.Reservation;
+import com.wework.officereservationrevenue.model.ReservationsStatistics;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,104 +19,82 @@ import java.util.List;
 
 public class OfficeReservationRevenueApplicationTests {
 
-	@Test
-	public void testRevenueCalculation() {
+    @Test
+    public void testReservationStatisticsCalculation() {
 
-		ReservationRepository da = new ReservationRepository();
-		List<Reservation> reservations = da.getReservations();
+        ReservationRepository da = new ReservationRepository();
+        List<Reservation> reservations = da.getReservations();
 
-		CurrentRevenueCalculation currentRevenueCalculation = new CurrentRevenueCalculation();
+        CurrentReservationsStatisticsCalculation currentReservationsStatisticsCalculation = new CurrentReservationsStatisticsCalculation();
 
-		System.out.println("************testRevenueCalculation******************");
+        System.out.println("************testReservationStatisticsCalculation******************");
 
-		double revenue1 = currentRevenueCalculation.calculateRevenueForMonth("2018-01", reservations);
-		Assert.assertEquals (75500, revenue1, 0.0);
-		System.out.println("Offices revenue for the month 2018-01 is: " + revenue1);
+        String monthOfInterest = "2018-01";
 
-		double revenue2 = currentRevenueCalculation.calculateRevenueForMonth("2000-01", reservations);
-		Assert.assertEquals (0, revenue2, 0.0);
-		System.out.println("Offices revenue for the month 2000-01 is: " + revenue2);
-	}
+        ReservationsStatistics statistics = currentReservationsStatisticsCalculation.calculateReservationsStatistics(monthOfInterest, reservations);
+        Assert.assertEquals(75500, statistics.getRevenue(), 0.0);
+        System.out.println("Offices revenue for the month " + monthOfInterest + " is: " + statistics.getRevenue());
+        Assert.assertEquals(137, statistics.getUnreservedOfficesCapacity());
+        System.out.println("Total capacity for unreserved offices for the month " + monthOfInterest + " is: " + statistics.getUnreservedOfficesCapacity());
 
-	@Test
-	public void testCapacityCalculation() {
+        monthOfInterest = "2000-01";
 
-		ReservationRepository da = new ReservationRepository();
-		List<Reservation> reservations = da.getReservations();
+        statistics = currentReservationsStatisticsCalculation.calculateReservationsStatistics(monthOfInterest, reservations);
+        Assert.assertEquals(0, statistics.getRevenue(), 0.0);
+        System.out.println("Offices revenue for the month " + monthOfInterest + " is: " + statistics.getRevenue());
+        Assert.assertEquals(266, statistics.getUnreservedOfficesCapacity());
+        System.out.println("Total capacity for unreserved offices for the month " + monthOfInterest + " is: " + statistics.getUnreservedOfficesCapacity());
+    }
 
-		CurrentRevenueCalculation currentRevenueCalculation = new CurrentRevenueCalculation();
+    @Test
+    public void testReservationStatisticsCalculationForMoreDates() {
 
-		System.out.println("************testCapacityCalculation******************");
+        ReservationRepository da = new ReservationRepository();
+        List<Reservation> reservations = da.getReservations();
 
-		int capacity1 = currentRevenueCalculation.calculateUnreservedCapacityForMonth("2018-01", reservations);
-		Assert.assertEquals (137, capacity1);
-		System.out.println("Total capacity for unreserved offices for the month 2018-01 is: " + capacity1);
+        CurrentReservationsStatisticsCalculation currentReservationsStatisticsCalculation = new CurrentReservationsStatisticsCalculation();
+
+        System.out.println("************testReservationInsightsCalculationForMoreDates******************");
+
+        String monthOfInterest = "2013-01";
+
+        ReservationsStatistics statistics = currentReservationsStatisticsCalculation.calculateReservationsStatistics(monthOfInterest, reservations);
+        Assert.assertEquals(8100, statistics.getRevenue(), 0.0);
+        System.out.println("Offices revenue for the month " + monthOfInterest + " is: " + statistics.getRevenue());
+        Assert.assertEquals(254, statistics.getUnreservedOfficesCapacity());
+        System.out.println("Total capacity for unreserved offices for the month " + monthOfInterest + " is: " + statistics.getUnreservedOfficesCapacity());
+
+        monthOfInterest = "2013-06";
+
+        statistics = currentReservationsStatisticsCalculation.calculateReservationsStatistics(monthOfInterest, reservations);
+        Assert.assertEquals(15150, statistics.getRevenue(), 0.0);
+        System.out.println("Offices revenue for the month " + monthOfInterest + " is: " + statistics.getRevenue());
+        Assert.assertEquals(241, statistics.getUnreservedOfficesCapacity());
+        System.out.println("Total capacity for unreserved offices for the month " + monthOfInterest + " is: " + statistics.getUnreservedOfficesCapacity());
+
+        monthOfInterest = "2014-03";
+
+        statistics = currentReservationsStatisticsCalculation.calculateReservationsStatistics(monthOfInterest, reservations);
+        Assert.assertEquals(37215, statistics.getRevenue(), 0.0);
+        System.out.println("Offices revenue for the month " + monthOfInterest + " is: " + statistics.getRevenue());
+        Assert.assertEquals(203, statistics.getUnreservedOfficesCapacity());
+        System.out.println("Total capacity for unreserved offices for the month " + monthOfInterest + " is: " + statistics.getUnreservedOfficesCapacity());
 
 
-		int capacity2 = currentRevenueCalculation.calculateUnreservedCapacityForMonth("2000-01", reservations);
-		Assert.assertEquals (266, capacity2);
-		System.out.println("Total capacity for unreserved offices for the month 2000-01 is: " + capacity2);
-	}
+        monthOfInterest = "2014-09";
 
-	@Test
-	public void testRevenueCalculationForMoreDates() {
+        statistics = currentReservationsStatisticsCalculation.calculateReservationsStatistics(monthOfInterest, reservations);
+        Assert.assertEquals(86700, statistics.getRevenue(), 0.0);
+        System.out.println("Offices revenue for the month " + monthOfInterest + " is: " + statistics.getRevenue());
+        Assert.assertEquals(120, statistics.getUnreservedOfficesCapacity());
+        System.out.println("Total capacity for unreserved offices for the month " + monthOfInterest + " is: " + statistics.getUnreservedOfficesCapacity());
 
-		ReservationRepository da = new ReservationRepository();
-		List<Reservation> reservations = da.getReservations();
+        monthOfInterest = "2015-07";
 
-		CurrentRevenueCalculation currentRevenueCalculation = new CurrentRevenueCalculation();
-
-		System.out.println("************testRevenueCalculationForMoreDates******************");
-
-		double revenue1 = currentRevenueCalculation.calculateRevenueForMonth("2013-01", reservations);
-		Assert.assertEquals (8100, revenue1, 0.0);
-		System.out.println("Offices revenue for the month 2013-01 is: " + revenue1);
-
-		double revenue2 = currentRevenueCalculation.calculateRevenueForMonth("2013-06", reservations);
-		Assert.assertEquals (17650, revenue2, 0.0);
-		System.out.println("Offices revenue for the month 2013-06 is: " + revenue2);
-
-		double revenue3 = currentRevenueCalculation.calculateRevenueForMonth("2014-03", reservations);
-		Assert.assertEquals (37915, revenue3, 0.0);
-		System.out.println("Offices revenue for the month 2014-03 is: " + revenue3);
-
-		double revenue4 = currentRevenueCalculation.calculateRevenueForMonth("2014-09", reservations);
-		Assert.assertEquals (86557, revenue4, 0.0);
-		System.out.println("Offices revenue for the month 2014-09 is: " + revenue4);
-
-		double revenue5 = currentRevenueCalculation.calculateRevenueForMonth("2015-07", reservations);
-		Assert.assertEquals (76177, revenue5, 0.0);
-		System.out.println("Offices revenue for the month 2015-07 is: " + revenue5);
-	}
-
-	@Test
-	public void testCapacityCalculationForMoreDates() {
-
-		ReservationRepository da = new ReservationRepository();
-		List<Reservation> reservations = da.getReservations();
-
-		CurrentRevenueCalculation currentRevenueCalculation = new CurrentRevenueCalculation();
-
-		System.out.println("************testCapacityCalculationForMoreDates******************");
-
-		int capacity1 = currentRevenueCalculation.calculateUnreservedCapacityForMonth("2013-01", reservations);
-		Assert.assertEquals (254, capacity1);
-		System.out.println("Total capacity for unreserved offices for the month 2013-01 is: " + capacity1);
-
-		int capacity2 = currentRevenueCalculation.calculateUnreservedCapacityForMonth("2013-06", reservations);
-		Assert.assertEquals (241, capacity2);
-		System.out.println("Total capacity for unreserved offices for the month 2013-06 is: " + capacity2);
-
-		int capacity3 = currentRevenueCalculation.calculateUnreservedCapacityForMonth("2014-03", reservations);
-		Assert.assertEquals (207, capacity3);
-		System.out.println("Total capacity for unreserved offices for the month 2014-03 is: " + capacity3);
-
-		int capacity4 = currentRevenueCalculation.calculateUnreservedCapacityForMonth("2014-09", reservations);
-		Assert.assertEquals (120, capacity4);
-		System.out.println("Total capacity for unreserved offices for the month 2014-09 is: " + capacity4);
-
-		int capacity5 = currentRevenueCalculation.calculateUnreservedCapacityForMonth("2015-07", reservations);
-		Assert.assertEquals (135, capacity5);
-		System.out.println("Total capacity for unreserved offices for the month 2015-07 is: " + capacity5);
-	}
+        statistics = currentReservationsStatisticsCalculation.calculateReservationsStatistics(monthOfInterest, reservations);
+        Assert.assertEquals(76226, statistics.getRevenue(), 0.0);
+        System.out.println("Offices revenue for the month " + monthOfInterest + " is: " + statistics.getRevenue());
+        Assert.assertEquals(135, statistics.getUnreservedOfficesCapacity());
+        System.out.println("Total capacity for unreserved offices for the month " + monthOfInterest + " is: " + statistics.getUnreservedOfficesCapacity());
+    }
 }
