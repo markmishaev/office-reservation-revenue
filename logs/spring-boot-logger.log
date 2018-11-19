@@ -88,3 +88,6 @@
 2018-11-19 22:27:35,279 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfficeReservationRevenueApplicationTests on or01976nb with PID 9804 (started by OR01976 in C:\Projects\WeWork\office-reservation-revenue)
 2018-11-19 22:27:35,284 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
 2018-11-19 22:27:36,280 INFO org.springframework.boot.StartupInfoLogger [main] Started OfficeReservationRevenueApplicationTests in 1.954 seconds (JVM running for 4.002)
+2018-11-19 22:29:34,448 INFO org.springframework.boot.StartupInfoLogger [main] Starting OfficeReservationRevenueApplicationTests on or01976nb with PID 14712 (started by OR01976 in C:\Projects\WeWork\office-reservation-revenue)
+2018-11-19 22:29:34,452 INFO org.springframework.boot.SpringApplication [main] No active profile set, falling back to default profiles: default
+2018-11-19 22:29:35,664 INFO org.springframework.boot.StartupInfoLogger [main] Started OfficeReservationRevenueApplicationTests in 2.082 seconds (JVM running for 4.185)
